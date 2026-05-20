@@ -9,9 +9,7 @@ use Illuminate\View\View;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of all projects.
-     */
+   
     public function index(): View
     {
         $projects = Project::latest()->get();
@@ -19,17 +17,13 @@ class ProjectController extends Controller
         return view('projects.index', compact('projects'));
     }
 
-    /**
-     * Show the form for creating a new project.
-     */
+    
     public function create(): View
     {
         return view('projects.create');
     }
 
-    /**
-     * Validate and store a newly created project in the database.
-     */
+    
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -45,17 +39,13 @@ class ProjectController extends Controller
             ->with('success', 'Project created successfully!');
     }
 
-    /**
-     * Show the form for editing an existing project.
-     */
+   
     public function edit(Project $project): View
     {
         return view('projects.edit', compact('project'));
     }
 
-    /**
-     * Validate and update the specified project in the database.
-     */
+    
     public function update(Request $request, Project $project): RedirectResponse
     {
         $validated = $request->validate([
@@ -71,9 +61,7 @@ class ProjectController extends Controller
             ->with('success', 'Project updated successfully!');
     }
 
-    /**
-     * Remove the specified project from the database.
-     */
+   
     public function destroy(Project $project): RedirectResponse
     {
         $project->delete();
